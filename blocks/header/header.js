@@ -31,6 +31,14 @@ async function fetchNav() {
   if (!resp.ok) resp = await fetch('/nav.plain.html');
   if (!resp.ok) return null;
   const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
+  // the publishing pipeline wraps the label of an item that has a sub-list in a
+  // paragraph (li > p > a + ul); unwrap it so local and published markup match
+  doc.querySelectorAll('li').forEach((li) => {
+    const first = li.firstElementChild;
+    if (first && first.tagName === 'P' && li.querySelector(':scope > ul, :scope > ol')) {
+      first.replaceWith(...first.childNodes);
+    }
+  });
   // resolve relative media against the fragment, not the current page
   const base = resp.url;
   doc.querySelectorAll('img[src]').forEach((img) => {
