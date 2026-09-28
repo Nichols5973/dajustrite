@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://www.compliancesigns.com/"
+      ],
+      "representativeUrl": "https://www.compliancesigns.com/",
+      "description": "ComplianceSigns homepage: promo tile mosaic, category grid, best sellers, industry tabs, reviews slider, blog teasers, newsletter sign-up and brand value props",
+      "urlPattern": "/",
+      "blocks": [
+        {
+          "name": "cards-promo",
+          "instances": [".home-banner-section .banner-desktop"]
+        },
+        {
+          "name": "cards-category",
+          "instances": [".home-shop-category .pagebuilder-column-group"]
+        },
+        {
+          "name": "cards-product",
+          "instances": [".home-best-seller .products-grid"]
+        },
+        {
+          "name": "cards-industry",
+          "instances": [".home-food-service .tab-content"]
+        },
+        {
+          "name": "cards-review",
+          "instances": [".home-customer-review .reviews-list"]
+        },
+        {
+          "name": "cards-blog",
+          "instances": [".home-lastest-blogs .blogs"]
+        },
+        {
+          "name": "form-newsletter",
+          "instances": ["#my_email_sub_form_footer", ".home-sign-up form"]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [".home-why-csign .pagebuilder-column-group"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "Promo banner mosaic",
+          "selector": [".home-banner-section"],
+          "style": null,
+          "blocks": ["cards-promo"],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "Shop by Category",
+          "selector": [".home-shop-category"],
+          "style": "light-blue",
+          "blocks": ["cards-category"],
+          "defaultContent": [
+            ".home-shop-category h1",
+            ".home-shop-category h2",
+            ".home-shop-category a[href*='safety-5s-product-types']"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Best Sellers",
+          "selector": [".home-best-seller"],
+          "style": "grey",
+          "blocks": ["cards-product"],
+          "defaultContent": [".home-best-seller h2"]
+        },
+        {
+          "id": "4",
+          "name": "Industry tabs",
+          "selector": [".home-food-service"],
+          "style": "light-blue",
+          "blocks": ["cards-industry"],
+          "defaultContent": [
+            ".home-food-service h2",
+            ".home-food-service .tab-content a[href*='compliancesigns.com/']"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Customer reviews",
+          "selector": [".home-customer-review"],
+          "style": "dark",
+          "blocks": ["cards-review"],
+          "defaultContent": [
+            ".home-customer-review .review-left",
+            ".home-customer-review p.trustpilot-text"
+          ]
+        },
+        {
+          "id": "6",
+          "name": "News & Resources",
+          "selector": [".home-lastest-blogs"],
+          "style": "grey",
+          "blocks": ["cards-blog"],
+          "defaultContent": [
+            ".home-lastest-blogs h2",
+            ".home-lastest-blogs a[href$='/blog/']"
+          ]
+        },
+        {
+          "id": "7",
+          "name": "Newsletter sign-up",
+          "selector": [".home-sign-up"],
+          "style": "newsletter",
+          "blocks": ["form-newsletter"],
+          "defaultContent": [
+            ".home-sign-up > img",
+            ".home-sign-up h2",
+            ".home-sign-up .container-xl > div:nth-of-type(2)",
+            ".home-sign-up .container-xl > div:nth-of-type(4)"
+          ]
+        },
+        {
+          "id": "8",
+          "name": "Why ComplianceSigns",
+          "selector": [".home-why-csign"],
+          "style": null,
+          "blocks": ["cards-feature"],
+          "defaultContent": [
+            ".home-why-csign h2",
+            ".home-why-csign .container-xl > div > div > div:nth-of-type(1) p"
+          ]
+        }
+      ]
+    }
+  ]
+}

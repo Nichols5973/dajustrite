@@ -1,0 +1,201 @@
+/* cards-blog: featured article teaser + horizontal article teasers (News & Resources) */
+
+.cards-blog .cards-blog-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-blog .cards-blog-card {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  color: var(--cs-ink, #222);
+}
+
+/* source shows only the featured article on small screens */
+.cards-blog .cards-blog-card:not(.cards-blog-card-featured) {
+  display: none;
+}
+
+.cards-blog .cards-blog-card-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-blog .cards-blog-card-image picture,
+.cards-blog .cards-blog-card-image > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-blog .cards-blog-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s linear;
+}
+
+.cards-blog .cards-blog-card-image:hover img {
+  transform: scale(1.05);
+}
+
+.cards-blog .cards-blog-card-body {
+  padding: 24px 16px;
+  background-color: #fff;
+}
+
+.cards-blog .cards-blog-card-body h3 {
+  margin: 0 0 8px;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: var(--cs-gray-700, #374151);
+}
+
+.cards-blog .cards-blog-card-body p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--cs-ink, #222);
+}
+
+.cards-blog .cards-blog-card-body p:not(.button-container) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cards-blog .cards-blog-card-body p:not(.button-container) a:any-link {
+  color: var(--cs-navy, #004579);
+  font-weight: 400;
+}
+
+.cards-blog .cards-blog-card-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* "Read More": orange outlined button (overrides global rust button) */
+main .cards-blog .cards-blog-card-body p.button-container {
+  margin: 0;
+}
+
+main .cards-blog a.button:any-link {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  border: 1px solid var(--cs-orange, #f26822);
+  border-radius: 2px;
+  padding: 0 16px;
+  background: none;
+  box-shadow: none;
+  color: var(--cs-orange, #f26822);
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: normal;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transform: none;
+  transition: none;
+}
+
+main .cards-blog a.button:any-link::after {
+  content: none;
+}
+
+main .cards-blog a.button:any-link:hover,
+main .cards-blog a.button:any-link:focus-visible {
+  border-color: #9b3e0e;
+  background-color: #9b3e0e;
+  box-shadow: none;
+  color: #fff;
+  transform: none;
+}
+
+@media (width >= 600px) {
+  .cards-blog .cards-blog-card-body h3 {
+    margin-bottom: 24px;
+  }
+
+  .cards-blog .cards-blog-card-body p {
+    margin-bottom: 24px;
+  }
+
+  .cards-blog .cards-blog-card-body p:not(.button-container) {
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+
+  main .cards-blog a.button:any-link {
+    display: inline-block;
+  }
+
+  /* all teasers horizontal: square image left (40%, max 350px), text right */
+  .cards-blog .cards-blog-card,
+  .cards-blog .cards-blog-card:not(.cards-blog-card-featured) {
+    display: flex;
+    align-items: center;
+  }
+
+  .cards-blog .cards-blog-card-image {
+    flex: 0 1 40%;
+    width: 40%;
+    max-width: 350px;
+    min-height: 100%;
+  }
+
+  .cards-blog .cards-blog-card-body {
+    box-sizing: border-box;
+    padding: 24px;
+    flex: 1 1 60%;
+    width: 60%;
+  }
+}
+
+/* Desktop: featured teaser left (45%) with overlapping text panel, others stacked right (55%) */
+@media (width >= 1200px) {
+  .cards-blog .cards-blog-list {
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  }
+
+  .cards-blog .cards-blog-card-featured {
+    display: block;
+    grid-row: span 2;
+    max-width: 716px;
+  }
+
+  .cards-blog .cards-blog-card-featured:only-child {
+    grid-column: 1 / -1;
+  }
+
+  .cards-blog .cards-blog-card-featured .cards-blog-card-image {
+    width: auto;
+    max-width: none;
+  }
+
+  .cards-blog .cards-blog-card-featured .cards-blog-card-body {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    width: auto;
+  }
+}

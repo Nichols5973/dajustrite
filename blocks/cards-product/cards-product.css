@@ -1,0 +1,217 @@
+/* cards-product: product tiles (image, price, title, CTA) on white cards.
+   Values extracted from compliancesigns.com "Best Sellers" product grid. */
+
+.cards-product .cards-product-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 8px;
+}
+
+.cards-product .cards-product-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 8px;
+  background-color: light-dark(#fff, var(--color-card-dark, #162121));
+  color: var(--text-color, #222);
+}
+
+/* Image frame: square, image centered and capped at 222px */
+.cards-product .cards-product-card-image {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-product .cards-product-card-image picture,
+.cards-product .cards-product-card-image > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-product .cards-product-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 222px;
+  max-height: 222px;
+  object-fit: cover;
+  transition: transform 0.3s linear;
+}
+
+.cards-product .cards-product-card-image:hover img {
+  transform: scale(1.1);
+}
+
+/* Body: CTA pinned to the bottom so buttons align across a row */
+.cards-product .cards-product-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 16px;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+}
+
+.cards-product .cards-product-card-body > * {
+  margin: 0;
+}
+
+/* Price line: "From" label + bold amount */
+.cards-product .cards-product-card-price {
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.cards-product .cards-product-card-price-label {
+  margin-right: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--link-color, #3d4644);
+}
+
+.cards-product .cards-product-card-amount {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: light-dark(#000, var(--color-parchment, #f5f2ed));
+}
+
+/* Title: plain text link clamped to two lines */
+.cards-product .cards-product-card-title {
+  margin-bottom: 8px;
+}
+
+.cards-product .cards-product-card-title a:any-link {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 34px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  color: var(--link-color, #3d4644);
+  text-decoration: none;
+}
+
+.cards-product .cards-product-card-title a:hover {
+  color: var(--link-color, #3d4644);
+  text-decoration: none;
+}
+
+/* CTA: full-width orange outlined button (fully overrides global a.button) */
+main .cards-product .cards-product-card-body > .cards-product-card-cta {
+  margin: auto 0 0;
+}
+
+main .cards-product .cards-product-card-cta a.button:any-link,
+main .cards-product .cards-product-card-cta a:any-link {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--cs-orange, #f26822);
+  border-radius: 2px;
+  background: none;
+  color: var(--cs-orange, #f26822);
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: normal;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+main .cards-product .cards-product-card-cta a.button:any-link::after {
+  content: none;
+}
+
+main .cards-product .cards-product-card-cta a.button:any-link:hover,
+main .cards-product .cards-product-card-cta a:any-link:hover,
+main .cards-product .cards-product-card-cta a:any-link:focus-visible {
+  border-color: #9b3e0e;
+  background-color: #9b3e0e;
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-product .cards-product-card-image img {
+    transition: none;
+  }
+
+  .cards-product .cards-product-card-image:hover img {
+    transform: none;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-product .cards-product-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .cards-product .cards-product-card {
+    padding: 16px;
+  }
+
+  .cards-product .cards-product-card-price {
+    margin-bottom: 16px;
+  }
+
+  .cards-product .cards-product-card-price-label {
+    font-size: 16px;
+  }
+
+  .cards-product .cards-product-card-amount {
+    font-size: 24px;
+  }
+
+  .cards-product .cards-product-card-title {
+    margin-bottom: 16px;
+  }
+
+  .cards-product .cards-product-card-title a:any-link {
+    min-height: 44px;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-product .cards-product-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  /* Source shows full rows only: hide an incomplete trailing row (e.g. 6th of 6 tiles) */
+  .cards-product .cards-product-card:nth-child(5n + 6):nth-last-child(-n + 4),
+  .cards-product .cards-product-card:nth-child(5n + 6):nth-last-child(-n + 4) ~ .cards-product-card {
+    display: none;
+  }
+}

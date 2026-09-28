@@ -1,0 +1,387 @@
+/* ComplianceSigns template – brand tokens, sections and default content.
+   Applied only to pages with metadata "Template: compliancesigns". */
+
+body.compliancesigns {
+  /* brand palette */
+  --cs-blue: #004c97;
+  --cs-navy: #004579;
+  --cs-orange: #f26822;
+  --cs-orange-hover: #d9571a;
+  --cs-gray-700: #374151;
+  --cs-gray-200: #e5e7eb;
+  --cs-ink: #222;
+  --cs-link: #3d4644;
+  --cs-slate: #5b7d95;
+  --cs-sky-tint: rgb(147 197 253 / 10%);
+
+  /* map to project tokens */
+  --body-font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  --heading-font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  --background-color: light-dark(#fff, var(--color-obsidian));
+  --text-color: light-dark(var(--cs-ink), var(--color-parchment));
+  --link-color: light-dark(var(--cs-link), var(--color-parchment));
+  --link-hover-color: var(--cs-orange);
+  --cs-heading-color: light-dark(var(--cs-gray-700), var(--color-parchment));
+  --cs-content-width: 1616px;
+  --cs-section-space: 40px;
+
+  background-image: none;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+@media (width >= 900px) {
+  body.compliancesigns {
+    --cs-section-space: 80px;
+  }
+}
+
+/* drop the site-wide h2 accent bar (lazy-styles.css); [class] lifts specificity above it */
+body.compliancesigns main > .section[class] h2::after {
+  content: none;
+}
+
+/* layout: wide content area with 16px gutters */
+body.compliancesigns main > .section {
+  padding-block: var(--cs-section-space);
+}
+
+body.compliancesigns main > .section:first-child {
+  padding-block: 24px;
+}
+
+body.compliancesigns main > .section > div {
+  max-width: var(--cs-content-width);
+  padding-inline: 16px;
+}
+
+@media (width >= 900px) {
+  body.compliancesigns main > .section:first-child {
+    padding-block: 40px;
+  }
+}
+
+/* default content typography */
+body.compliancesigns main h1,
+body.compliancesigns main h2,
+body.compliancesigns main h3 {
+  font-family: var(--heading-font-family);
+  letter-spacing: normal;
+}
+
+body.compliancesigns main .default-content-wrapper h1 {
+  margin: 0 0 40px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: light-dark(var(--cs-blue), var(--color-parchment));
+  text-align: center;
+}
+
+body.compliancesigns main .default-content-wrapper h2 {
+  margin: 0 0 24px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--cs-heading-color);
+  text-align: center;
+}
+
+body.compliancesigns main .default-content-wrapper p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+@media (width >= 900px) {
+  body.compliancesigns main .default-content-wrapper h1 {
+    font-size: 40px;
+  }
+
+  body.compliancesigns main .default-content-wrapper h2 {
+    margin-bottom: 40px;
+    font-size: 52px;
+    text-align: start;
+  }
+
+  body.compliancesigns main .cards-feature-container .default-content-wrapper h2,
+  body.compliancesigns main .section.newsletter .default-content-wrapper h2,
+  body.compliancesigns main .section.dark .default-content-wrapper h2 {
+    text-align: center;
+  }
+}
+
+/* links and buttons: standalone links render as underlined text links */
+body.compliancesigns main p.button-container {
+  margin: 16px 0;
+}
+
+body.compliancesigns main .default-content-wrapper a.button:any-link {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--link-color);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-decoration: underline;
+  text-transform: none;
+  white-space: normal;
+  overflow: visible;
+}
+
+body.compliancesigns main .default-content-wrapper a.button:any-link::after {
+  content: none;
+}
+
+body.compliancesigns main .default-content-wrapper a.button:any-link:hover,
+body.compliancesigns main .default-content-wrapper a.button:any-link:focus-visible {
+  color: var(--cs-orange);
+}
+
+/* why ComplianceSigns: centered intro */
+body.compliancesigns main .cards-feature-container .default-content-wrapper {
+  text-align: center;
+}
+
+body.compliancesigns main .cards-feature-container .default-content-wrapper h2 {
+  margin-bottom: 16px;
+}
+
+body.compliancesigns main .cards-feature-container .default-content-wrapper p {
+  margin-bottom: 24px;
+  color: var(--cs-heading-color);
+}
+
+/* newsletter text sits white on the background photo */
+body.compliancesigns main > .section.newsletter .default-content-wrapper h2 {
+  margin-bottom: 32px;
+  color: #fff;
+}
+
+body.compliancesigns main > .section.newsletter .default-content-wrapper p {
+  color: #fff;
+  text-align: center;
+}
+
+/* "View All" links sit at the end of their section */
+body.compliancesigns main .cards-category-container > .default-content-wrapper:last-child,
+body.compliancesigns main .cards-blog-container > .default-content-wrapper:last-child {
+  text-align: end;
+}
+
+/* news: "View All" sits top-right, level with the heading, on desktop */
+@media (width >= 900px) {
+  body.compliancesigns main > .section.cards-blog-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    padding-inline: max(16px, calc((100% - var(--cs-content-width)) / 2));
+  }
+
+  body.compliancesigns main > .section.cards-blog-container > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.compliancesigns main > .section.cards-blog-container > .default-content-wrapper:first-child {
+    grid-area: 1 / 1;
+  }
+
+  body.compliancesigns main > .section.cards-blog-container > .default-content-wrapper:last-child {
+    grid-area: 1 / 2;
+  }
+
+  body.compliancesigns main > .section.cards-blog-container > .cards-blog-wrapper {
+    grid-area: 2 / 1 / 3 / 3;
+  }
+}
+
+/* section backgrounds */
+body.compliancesigns main > .section.light-blue {
+  background-color: light-dark(var(--cs-sky-tint), var(--color-card-dark));
+}
+
+body.compliancesigns main > .section.grey {
+  background-color: light-dark(var(--cs-gray-200), var(--color-card-dark));
+}
+
+body.compliancesigns main > .section.dark {
+  background-color: var(--cs-navy);
+  color: #fff;
+}
+
+body.compliancesigns main > .section.dark .default-content-wrapper h2,
+body.compliancesigns main > .section.dark .default-content-wrapper p {
+  color: #fff;
+  text-align: center;
+}
+
+body.compliancesigns main > .section.dark .default-content-wrapper p {
+  font-size: 14px;
+}
+
+body.compliancesigns main > .section.dark .default-content-wrapper a:any-link {
+  color: #fff;
+}
+
+/* orange CTA button on dark sections */
+body.compliancesigns main > .section.dark .default-content-wrapper a.button:any-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 16px;
+  border-radius: 2px;
+  background-color: var(--cs-orange);
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+body.compliancesigns main > .section.dark .default-content-wrapper a.button:any-link:hover,
+body.compliancesigns main > .section.dark .default-content-wrapper a.button:any-link:focus-visible {
+  background-color: var(--cs-orange-hover);
+  color: #fff;
+}
+
+body.compliancesigns main > .section.dark .default-content-wrapper:last-child p {
+  margin-top: 24px;
+  font-weight: 500;
+}
+
+body.compliancesigns main > .section.dark .default-content-wrapper:last-child img {
+  display: block;
+  width: auto;
+  height: 24px;
+  margin: 8px auto 0;
+  aspect-ratio: auto;
+}
+
+/* reviews: intro left, slider right on desktop */
+@media (width >= 900px) {
+  body.compliancesigns main > .section.dark.cards-review-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    column-gap: 48px;
+    align-items: center;
+    padding-inline: max(16px, calc((100% - var(--cs-content-width)) / 2));
+  }
+
+  body.compliancesigns main > .section.dark.cards-review-container > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.compliancesigns main > .section.dark.cards-review-container > .default-content-wrapper:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* newsletter: first image becomes the section background */
+body.compliancesigns main > .section.newsletter {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  text-align: center;
+}
+
+body.compliancesigns main > .section.newsletter > .default-content-wrapper:first-child > p:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: 0;
+}
+
+body.compliancesigns main > .section.newsletter > .default-content-wrapper:first-child > p:first-child picture,
+body.compliancesigns main > .section.newsletter > .default-content-wrapper:first-child > p:first-child img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: auto;
+}
+
+@media (width >= 900px) {
+  body.compliancesigns main > .section.newsletter {
+    min-height: 416px;
+  }
+}
+
+/* section-based tabs (industry tabs) */
+body.compliancesigns main .section.tabs {
+  padding-top: 0;
+  background-color: light-dark(var(--cs-sky-tint), var(--color-card-dark));
+}
+
+body.compliancesigns main .section.tabs .tabs-wrapper {
+  max-width: var(--cs-content-width);
+  padding-inline: 16px;
+}
+
+body.compliancesigns main .section.tabs .tabs-list {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: none;
+  margin: 0 0 32px;
+  padding: 0;
+  border-bottom: 0;
+  overflow: visible;
+}
+
+body.compliancesigns main .section.tabs .tabs-list button {
+  padding: 4px 9px;
+  border: 0;
+  border-radius: 0;
+  color: var(--cs-heading-color);
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: capitalize;
+  opacity: 1;
+}
+
+body.compliancesigns main .section.tabs .tabs-list button[aria-selected='true'] {
+  background-color: var(--cs-gray-700);
+  color: #fff;
+}
+
+body.compliancesigns main .section.tabs .tabs-list button:hover {
+  color: var(--cs-orange);
+}
+
+body.compliancesigns main .section.tabs .tabs-list button[aria-selected='true']:hover {
+  color: #fff;
+}
+
+body.compliancesigns main .section.tabs [role='tabpanel'] .default-content-wrapper a:any-link {
+  color: var(--cs-slate);
+}
+
+@media (width >= 900px) {
+  body.compliancesigns main .section.tabs .tabs-list {
+    margin-bottom: 56px;
+  }
+
+  body.compliancesigns main .section.tabs .tabs-list button {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  /* the standalone "Shop All" link duplicates the banner tile link on desktop */
+  body.compliancesigns main .section.tabs [role='tabpanel'] .default-content-wrapper {
+    display: none;
+  }
+}
+
+/* industry tabs intro heading sits flush on the tinted band */
+body.compliancesigns main > .section.light-blue:has(+ .section.tabs) {
+  padding-bottom: 0;
+}

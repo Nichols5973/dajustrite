@@ -1,0 +1,216 @@
+/* cards-promo: asymmetric promo mosaic (1 large tile + 3 smaller tiles)
+   Values extracted from compliancesigns.com .home-banner-section */
+
+.cards-promo .cards-promo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Tile: image fills the tile, text overlays it */
+.cards-promo .cards-promo-card {
+  position: relative;
+  display: flex;
+  aspect-ratio: 1 / 1;
+}
+
+/* Mobile (source): only the feature tile is shown */
+.cards-promo .cards-promo-card:not(.cards-promo-card-featured) {
+  display: none;
+}
+
+.cards-promo .cards-promo-card-image {
+  position: absolute;
+  inset: 0;
+  line-height: 0;
+}
+
+.cards-promo .cards-promo-card-image picture,
+.cards-promo .cards-promo-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-promo .cards-promo-card-image img {
+  max-height: unset;
+  object-fit: cover;
+  object-position: left top;
+  box-shadow: 0 8px 8px -4px rgb(0 0 0 / 10%), 0 0 4px 0 rgb(0 0 0 / 8%);
+}
+
+.cards-promo .cards-promo-card-body {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.cards-promo .cards-promo-card-body h2 {
+  margin: 0 0 16px;
+  font-family: var(--heading-font-family, "Helvetica Neue", helvetica, arial, sans-serif);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #fff;
+}
+
+/* source headings have no accent bar: cancel the global lazy-styles h2::after */
+.cards-promo.block .cards-promo-card .cards-promo-card-body h2::after {
+  content: none;
+  display: none;
+}
+
+.cards-promo .cards-promo-card-body p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family, "Helvetica Neue", helvetica, arial, sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+}
+
+/* description clamps to 3 lines and yields space first when a tile is short */
+.cards-promo .cards-promo-card-body p:not(.button-container) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.cards-promo .cards-promo-card-body > :last-child,
+.cards-promo .cards-promo-card-body p.button-container {
+  margin: 0;
+}
+
+/* CTA: orange label (source .button-orange); overrides global a.button */
+.cards-promo .cards-promo-card a.cards-promo-card-cta:any-link {
+  position: static;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 2px;
+  padding: 10px 16px;
+  font-family: var(--body-font-family, "Helvetica Neue", helvetica, arial, sans-serif);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: normal;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  background-color: var(--cs-orange, #f26822);
+  background-image: none;
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+.cards-promo .cards-promo-card a.cards-promo-card-cta:any-link:hover,
+.cards-promo .cards-promo-card a.cards-promo-card-cta:any-link:focus-visible {
+  border-color: transparent;
+  background-color: #9b3e0e;
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Whole tile is clickable via the stretched primary CTA */
+.cards-promo .cards-promo-card a.cards-promo-card-cta:any-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: none;
+  transform: none;
+  transition: none;
+}
+
+/* Tablet: feature tile full width, two tiles side by side, last tile full width */
+@media (width >= 600px) {
+  .cards-promo .cards-promo-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-promo .cards-promo-card:not(.cards-promo-card-featured) {
+    display: flex;
+    aspect-ratio: 560 / 272;
+  }
+
+  .cards-promo .cards-promo-card-featured,
+  .cards-promo .cards-promo-card:nth-child(4) {
+    grid-column: 1 / -1;
+  }
+
+  .cards-promo .cards-promo-card:nth-child(4) {
+    aspect-ratio: 1040 / 250;
+  }
+
+  .cards-promo .cards-promo-card-body {
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 24px;
+    text-align: start;
+  }
+
+  .cards-promo .cards-promo-card-body p {
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+/* Desktop: feature tile left (35%) spanning two rows,
+   two tiles top-right, fourth tile bottom-right spanning two columns */
+@media (width >= 900px) {
+  .cards-promo .cards-promo-list {
+    grid-template-columns: calc((100% - 16px) * 0.35) 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .cards-promo .cards-promo-card-featured {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .cards-promo .cards-promo-card:not(.cards-promo-card-featured) {
+    aspect-ratio: auto;
+  }
+
+  .cards-promo .cards-promo-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .cards-promo .cards-promo-card-featured .cards-promo-card-body {
+    padding: 0 40px 40px;
+  }
+
+  .cards-promo .cards-promo-card-featured .cards-promo-card-body h2 {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-promo .cards-promo-card-featured .cards-promo-card-body h2 {
+    font-size: 52px;
+  }
+}

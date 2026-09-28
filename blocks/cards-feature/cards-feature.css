@@ -1,0 +1,80 @@
+/* cards-feature: icon + title + description feature items */
+
+.cards-feature {
+  color: var(--text-color, #222);
+  text-align: center;
+}
+
+.cards-feature .cards-feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards-feature .cards-feature-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--cs-gray-200, #e5e7eb);
+  border-radius: 2px;
+  box-shadow: 0 0 4px 0 rgb(0 0 0 / 16%);
+  text-align: center;
+}
+
+/* Icon: 128x64 source GIF rendered at natural proportions */
+.cards-feature .cards-feature-card-image {
+  /* source: 68px inline-image line box + 8px figure margin = 76px to title */
+  margin: 0 0 12px;
+}
+
+.cards-feature .cards-feature-card-image img {
+  width: 128px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: fill;
+}
+
+.cards-feature .cards-feature-card-body h3 {
+  margin: 0 0 24px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28.8px;
+  color: var(--cs-heading-color, #374151);
+}
+
+.cards-feature .cards-feature-card-body p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 19.2px;
+  color: var(--cs-heading-color, #374151);
+}
+
+.cards-feature .cards-feature-card-body > :last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 600px) {
+  .cards-feature .cards-feature-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-feature .cards-feature-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards-feature .cards-feature-card {
+    padding: 24px 10px 40px;
+  }
+
+  /* Reserve two title lines so descriptions align across the row */
+  .cards-feature .cards-feature-card-body h3 {
+    min-height: calc(2 * 28.8px);
+  }
+}

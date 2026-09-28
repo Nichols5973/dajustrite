@@ -1,0 +1,44 @@
+{
+  "id": "form-newsletter",
+  "name": "form-newsletter",
+  "type": "form",
+  "variantName": "form-newsletter",
+  "baseBlock": "form",
+  "version": "1.0.0",
+  "created": "2026-09-28T00:00:00.000Z",
+  "canonicalModel": "standalone",
+  "sourceContext": {
+    "originUrl": "https://www.compliancesigns.com/",
+    "discoveredDuring": "site-migration",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "imagePattern": "noimg",
+    "purpose": "form-newsletter: newsletter subscription form (first name, last name, email*, industry select, submit) in a single inline row",
+    "structure": "4 fields + submit button inline on desktop; section provides heading and background image",
+    "hasBgImage": false,
+    "position": "bottom",
+    "isFullWidth": false,
+    "hasGrid": true
+  },
+  "contentPattern": {
+    "structure": "one row, one cell: a link to the form-definition sheet (fields: firstname, lastname, email [required], industry [select with options], submit), optionally followed by a link to the submission endpoint. Labels, placeholders, options and button text come from the sheet",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.compliancesigns.com/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-28T00:00:00.000Z"
+  },
+  "options": [],
+  "memberVariantIds": ["form-newsletter"]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "cards-product",
+  "name": "cards-product",
+  "type": "cards",
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-28T00:00:00.000Z",
+  "canonicalModel": "standalone",
+  "sourceContext": {
+    "originUrl": "https://www.compliancesigns.com/",
+    "discoveredDuring": "site-migration",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "imagePattern": "multiple",
+    "purpose": "cards-product-grid: curated product tiles with price, title link and 'Select Options' CTA, 3 per row on desktop",
+    "structure": "product image + price + title link + full-width CTA button",
+    "hasBgImage": false,
+    "position": "middle",
+    "isFullWidth": false,
+    "hasGrid": true
+  },
+  "contentPattern": {
+    "structure": "one row per product: [product image] | [price paragraph (e.g. 'From $8.30'), product title link, 'Select Options' link]",
+    "buttonCount": 6,
+    "imageCount": 6
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.compliancesigns.com/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-28T00:00:00.000Z"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-product"]
+}

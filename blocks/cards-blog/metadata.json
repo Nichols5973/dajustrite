@@ -1,0 +1,44 @@
+{
+  "id": "cards-blog",
+  "name": "cards-blog",
+  "type": "cards",
+  "variantName": "cards-blog",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-28T00:00:00.000Z",
+  "canonicalModel": "standalone",
+  "sourceContext": {
+    "originUrl": "https://www.compliancesigns.com/",
+    "discoveredDuring": "site-migration",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "imagePattern": "multiple",
+    "purpose": "cards-blog-teasers: article teasers with 1 large featured teaser on the left and horizontal teasers stacked on the right",
+    "structure": "image + h3 + excerpt + 'Read More' CTA; featured teaser has its text box overlaid on the image",
+    "hasBgImage": false,
+    "position": "bottom",
+    "isFullWidth": false,
+    "hasGrid": true
+  },
+  "contentPattern": {
+    "structure": "one row per article: [article image] | [h3 title, excerpt paragraph, 'Read More' link]; row 1 renders as the featured teaser",
+    "buttonCount": 3,
+    "imageCount": 3
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.compliancesigns.com/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-28T00:00:00.000Z"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-blog"]
+}

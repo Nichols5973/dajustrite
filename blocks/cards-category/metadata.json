@@ -1,0 +1,44 @@
+{
+  "id": "cards-category",
+  "name": "cards-category",
+  "type": "cards",
+  "variantName": "cards-category",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-28T00:00:00.000Z",
+  "canonicalModel": "standalone",
+  "sourceContext": {
+    "originUrl": "https://www.compliancesigns.com/",
+    "discoveredDuring": "site-migration",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "imagePattern": "multiple",
+    "purpose": "cards-category-grid: grid of category tiles (framed sign image + caption link), 5 per row on desktop",
+    "structure": "image + linked caption per tile, compact 5-column grid",
+    "hasBgImage": false,
+    "position": "middle",
+    "isFullWidth": false,
+    "hasGrid": true
+  },
+  "contentPattern": {
+    "structure": "one row per category: [image] | [linked caption text]",
+    "buttonCount": 0,
+    "imageCount": 10
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.compliancesigns.com/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-28T00:00:00.000Z"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-category"]
+}

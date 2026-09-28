@@ -1,0 +1,203 @@
+/* form-newsletter: compact sign-up form, fields inline in one row on desktop.
+   Values extracted from the source HubSpot footer form (#my_email_sub_form_footer). */
+
+.form-newsletter {
+  --form-newsletter-field-height: 40px;
+  --form-newsletter-radius: 2px;
+  --form-newsletter-text: var(--cs-gray-700, #374151);
+  --form-newsletter-accent: var(--cs-orange, #f26822);
+  --form-newsletter-accent-hover: #9b3e0e;
+  --form-newsletter-icon-user: url("data:image/svg+xml,%3Csvg width='16' height='18' viewBox='0 0 16 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.3444 14.3326C14.9443 13.3851 14.3638 12.5244 13.6352 11.7986C12.9088 11.0706 12.0483 10.4902 11.1012 10.0894C11.0927 10.0852 11.0842 10.0831 11.0757 10.0788C12.3968 9.12458 13.2556 7.57023 13.2556 5.81655C13.2556 2.91141 10.9018 0.557617 7.99671 0.557617C5.09157 0.557617 2.73778 2.91141 2.73778 5.81655C2.73778 7.57023 3.59659 9.12458 4.91769 10.0809C4.9092 10.0852 4.90072 10.0873 4.89224 10.0915C3.94224 10.4923 3.08979 11.067 2.3582 11.8007C1.63024 12.5271 1.04984 13.3876 0.649049 14.3347C0.255312 15.262 0.0429611 16.256 0.0234905 17.2632C0.0229245 17.2858 0.0268942 17.3083 0.0351658 17.3294C0.0434374 17.3505 0.0558435 17.3697 0.071653 17.3859C0.0874625 17.4021 0.106356 17.415 0.127219 17.4238C0.148082 17.4326 0.170494 17.4371 0.193133 17.4371H1.46545C1.55876 17.4371 1.63298 17.3629 1.6351 17.2717C1.67751 15.6346 2.33487 14.1015 3.49693 12.9394C4.69927 11.7371 6.29604 11.0755 7.99671 11.0755C9.69738 11.0755 11.2941 11.7371 12.4965 12.9394C13.6585 14.1015 14.3159 15.6346 14.3583 17.2717C14.3604 17.365 14.4347 17.4371 14.528 17.4371H15.8003C15.8229 17.4371 15.8453 17.4326 15.8662 17.4238C15.8871 17.415 15.9059 17.4021 15.9218 17.3859C15.9376 17.3697 15.95 17.3505 15.9582 17.3294C15.9665 17.3083 15.9705 17.2858 15.9699 17.2632C15.9487 16.2496 15.7388 15.2635 15.3444 14.3326ZM7.99671 9.46387C7.02338 9.46387 6.10731 9.08429 5.41813 8.39512C4.72896 7.70594 4.34938 6.78987 4.34938 5.81655C4.34938 4.84322 4.72896 3.92715 5.41813 3.23797C6.10731 2.5488 7.02338 2.16922 7.99671 2.16922C8.97003 2.16922 9.8861 2.5488 10.5753 3.23797C11.2645 3.92715 11.644 4.84322 11.644 5.81655C11.644 6.78987 11.2645 7.70594 10.5753 8.39512C9.8861 9.08429 8.97003 9.46387 7.99671 9.46387Z' fill='%23374151'/%3E%3C/svg%3E");
+  --form-newsletter-icon-email: url("data:image/svg+xml,%3Csvg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.8214 0.531738H1.17857C0.803237 0.531738 0.5 0.834975 0.5 1.21031V14.7817C0.5 15.1571 0.803237 15.4603 1.17857 15.4603H18.8214C19.1968 15.4603 19.5 15.1571 19.5 14.7817V1.21031C19.5 0.834975 19.1968 0.531738 18.8214 0.531738ZM17.9732 2.88129V13.9335H2.02679V2.88129L1.44152 2.42538L2.27489 1.35451L3.18248 2.06064H16.8196L17.7272 1.35451L18.5606 2.42538L17.9732 2.88129ZM16.8196 2.05852L10 7.35986L3.18036 2.05852L2.27277 1.35239L1.4394 2.42326L2.02466 2.87917L9.26841 8.51131C9.47673 8.67316 9.73302 8.76101 9.99682 8.76101C10.2606 8.76101 10.5169 8.67316 10.7252 8.51131L17.9732 2.88129L18.5585 2.42538L17.7251 1.35451L16.8196 2.05852Z' fill='%23374151'/%3E%3C/svg%3E");
+  --form-newsletter-icon-chevron: url("data:image/svg+xml,%3Csvg width='25' height='24' viewBox='0 0 25 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 9L12.5 15L18.5 9' stroke='%23374151' stroke-width='2' stroke-linecap='square' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+  /* source keeps 32px between the intro copy, the form and the note below */
+  margin-block: 32px;
+}
+
+.form-newsletter form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+  font-family: var(--body-font-family, "Helvetica Neue", helvetica, arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* conditional fields hidden by the form builder */
+.form-newsletter [aria-hidden='true'] {
+  display: none;
+}
+
+.form-newsletter form > div,
+.form-newsletter form > fieldset {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+/* source hides the field labels visually; keep them for assistive tech */
+.form-newsletter .form-field > label,
+.form-newsletter .form-field > legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-newsletter label[data-required='true']::after {
+  content: '*';
+}
+
+.form-newsletter input,
+.form-newsletter select,
+.form-newsletter textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: var(--form-newsletter-field-height);
+  margin: 0;
+  border: 0;
+  border-radius: var(--form-newsletter-radius);
+  padding: 5px 31px 5px 55px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 12px 50%;
+  background-size: 16px;
+  color: var(--form-newsletter-text);
+  font: inherit;
+  font-size: 16px;
+  line-height: 19.2px;
+  text-align: left;
+  outline: none;
+}
+
+.form-newsletter input[type='text'] {
+  background-image: var(--form-newsletter-icon-user);
+}
+
+.form-newsletter input[type='email'] {
+  background-image: var(--form-newsletter-icon-email);
+  background-size: 19px;
+}
+
+.form-newsletter textarea {
+  height: auto;
+}
+
+.form-newsletter input::placeholder,
+.form-newsletter textarea::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
+.form-newsletter select {
+  appearance: none;
+  padding: 0 40px 0 10px;
+  background-image: var(--form-newsletter-icon-chevron);
+  background-position: calc(100% - 10px) 50%;
+  background-size: 24px;
+  cursor: pointer;
+}
+
+.form-newsletter input:focus-visible,
+.form-newsletter select:focus-visible,
+.form-newsletter textarea:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.form-newsletter .button-wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+/* reset the global .button look to the source's flat orange submit */
+.form-newsletter button.button {
+  flex: 1 1 auto;
+  height: var(--form-newsletter-field-height);
+  margin: 0;
+  border: 0;
+  border-radius: var(--form-newsletter-radius);
+  padding: 10px 16px;
+  background-color: var(--form-newsletter-accent);
+  background-image: none;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: normal;
+  text-transform: capitalize;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.2s;
+}
+
+.form-newsletter button.button::after {
+  content: none;
+}
+
+.form-newsletter button.button:hover,
+.form-newsletter button.button:focus-visible {
+  border-color: transparent;
+  background-color: var(--form-newsletter-accent-hover);
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+
+.form-newsletter button.button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.form-newsletter form > p[role='status'] {
+  margin: 0;
+  text-align: center;
+}
+
+.form-newsletter form > p[role='status']:empty {
+  display: none;
+}
+
+/* Mobile/tablet: fields stack full width (as on source).
+   Desktop: all fields and the submit button in a single row */
+@media (width >= 900px) {
+  .form-newsletter form {
+    flex-flow: row nowrap;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .form-newsletter form > div,
+  .form-newsletter form > fieldset {
+    flex: 1 1 0;
+  }
+
+  .form-newsletter form > .button-wrapper {
+    flex: 0 0 auto;
+  }
+
+  .form-newsletter button.button {
+    flex: 0 0 auto;
+  }
+
+  /* status message drops below the row */
+  .form-newsletter form:has(> p[role='status']:not(:empty)) {
+    flex-wrap: wrap;
+  }
+
+  .form-newsletter form > p[role='status'] {
+    flex-basis: 100%;
+  }
+}

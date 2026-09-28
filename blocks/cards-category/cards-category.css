@@ -1,0 +1,102 @@
+/* cards-category: compact grid of framed image + caption tiles */
+
+.cards-category .cards-category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cards-category .cards-category-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* 3-column layout: hide a lone orphan tile in the last row (as on source) */
+.cards-category .cards-category-card:last-child:nth-child(3n + 1) {
+  display: none;
+}
+
+/* Image frame: source ratio 310 x 245, image covers and zooms on hover */
+.cards-category .cards-category-card-image {
+  aspect-ratio: 310 / 245;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-category .cards-category-card-image picture,
+.cards-category .cards-category-card-image a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-category .cards-category-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cards-category .cards-category-card-body {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--cs-link, #3d4644);
+}
+
+.cards-category .cards-category-card-body > * {
+  margin: 0;
+}
+
+/* Caption link covers the whole tile */
+.cards-category .cards-category-card-link:any-link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.cards-category .cards-category-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards-category .cards-category-card:hover .cards-category-card-image img {
+  transform: scale(1.1);
+}
+
+.cards-category .cards-category-card:hover .cards-category-card-body,
+.cards-category .cards-category-card:focus-within .cards-category-card-body {
+  color: #9b3e0e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-category .cards-category-card-image img {
+    transition: none;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-category .cards-category-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 40px 16px;
+  }
+
+  .cards-category .cards-category-card:last-child:nth-child(3n + 1) {
+    display: flex;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-category .cards-category-card-body {
+    font-size: 24px;
+  }
+}

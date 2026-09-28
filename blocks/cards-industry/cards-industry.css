@@ -1,0 +1,266 @@
+/* cards-industry: industry banner tile + product tiles in one row
+   Values extracted from compliancesigns.com (.home-food-service .tab-content) */
+
+.cards-industry .cards-industry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 8px;
+}
+
+/* Product tiles: white card with square image, price, title and outlined CTA */
+.cards-industry .cards-industry-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 8px;
+  background-color: var(--background-color, #fff);
+  color: var(--text-color, #222);
+}
+
+.cards-industry .cards-industry-card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-industry .cards-industry-card-image picture,
+.cards-industry .cards-industry-card-image > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-industry .cards-industry-card-image img {
+  display: block;
+  width: 100%;
+  max-width: 222px;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.cards-industry .cards-industry-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 16px;
+}
+
+main .cards-industry .cards-industry-card-body > :not(.cards-industry-card-cta) {
+  margin: 0 0 8px;
+}
+
+/* Price: authored label ("From") small, amount large and bold */
+main .cards-industry.block .cards-industry-card-body > p.cards-industry-card-price {
+  color: var(--cs-link, #3d4644);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.cards-industry .cards-industry-card-amount {
+  margin-left: 4px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Title: plain link, two lines max */
+main .cards-industry.block .cards-industry-card-body > p.cards-industry-card-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  min-height: 34px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+.cards-industry .cards-industry-card-title a:any-link,
+.cards-industry .cards-industry-card-title a:any-link:hover {
+  color: var(--cs-link, #3d4644);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+main .cards-industry .cards-industry-card-body > .cards-industry-card-cta {
+  margin: auto 0 0;
+}
+
+/* CTA: orange outlined "Select Options" (overrides global rust button) */
+main .cards-industry .cards-industry-card-cta a.button:any-link {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: 1px solid var(--cs-orange, #f26822);
+  border-radius: 2px;
+  background: none;
+  box-shadow: none;
+  color: var(--cs-orange, #f26822);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: normal;
+  text-align: center;
+  text-transform: none;
+  transform: none;
+}
+
+main .cards-industry a.button:any-link::after {
+  content: none;
+}
+
+main .cards-industry .cards-industry-card-cta a.button:any-link:hover,
+main .cards-industry .cards-industry-card-cta a.button:any-link:focus-visible {
+  border-color: #9b3e0e;
+  background: #9b3e0e;
+  box-shadow: none;
+  color: #fff;
+  transform: none;
+}
+
+/* Featured industry tile: hidden on small screens (the section's "Shop All" link stands in),
+   photo fills the tile with name + button at the bottom on desktop */
+.cards-industry .cards-industry-card-featured {
+  display: none;
+}
+
+.cards-industry .cards-industry-card-featured .cards-industry-card-image {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+}
+
+.cards-industry .cards-industry-card-featured .cards-industry-card-image picture {
+  display: block;
+}
+
+.cards-industry .cards-industry-card-featured .cards-industry-card-image img {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+/* flex items honour z-index unpositioned, so the stretched link below
+   resolves against the tile (li) while painting above the photo */
+.cards-industry .cards-industry-card-featured .cards-industry-card-body {
+  z-index: 1;
+  flex: 0 0 auto;
+  align-items: center;
+  margin: auto 0 0;
+  padding: 0 16px 56px;
+  text-align: center;
+}
+
+main .cards-industry .cards-industry-card.cards-industry-card-featured .cards-industry-card-body > p {
+  margin: 0;
+  text-align: center;
+}
+
+main .cards-industry .cards-industry-card.cards-industry-card-featured .cards-industry-card-body > :first-child {
+  margin-bottom: 40px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+main .cards-industry .cards-industry-card-featured a.cards-industry-card-featured-link:any-link {
+  position: static;
+  display: inline-block;
+  overflow: visible;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--cs-orange, #f26822);
+  box-shadow: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: normal;
+  text-decoration: none;
+  text-transform: capitalize;
+  transform: none;
+}
+
+main .cards-industry .cards-industry-card-featured a.cards-industry-card-featured-link:any-link:hover,
+main .cards-industry .cards-industry-card-featured a.cards-industry-card-featured-link:any-link:focus-visible {
+  border: 0;
+  background: #9b3e0e;
+  box-shadow: none;
+  color: #fff;
+  transform: none;
+}
+
+/* stretched link: the whole tile is clickable */
+main .cards-industry .cards-industry-card-featured a.cards-industry-card-featured-link:any-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  transform: none;
+  transition: none;
+}
+
+@media (width >= 600px) {
+  .cards-industry .cards-industry-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 900px) {
+  .cards-industry .cards-industry-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .cards-industry .cards-industry-card {
+    padding: 16px;
+  }
+
+  main .cards-industry .cards-industry-card-body > :not(.cards-industry-card-cta) {
+    margin-bottom: 16px;
+  }
+
+  main .cards-industry.block .cards-industry-card-body > p.cards-industry-card-price {
+    font-size: 16px;
+  }
+
+  .cards-industry .cards-industry-card-amount {
+    font-size: 24px;
+  }
+
+  main .cards-industry.block .cards-industry-card-body > p.cards-industry-card-title {
+    min-height: 44px;
+    font-size: 18px;
+    line-height: 21.6px;
+  }
+
+  .cards-industry .cards-industry-card-featured {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding: 0;
+  }
+}
+
+@media (width >= 1200px) {
+  main .cards-industry .cards-industry-card.cards-industry-card-featured .cards-industry-card-body > :first-child {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "cards-industry",
+  "name": "cards-industry",
+  "type": "cards",
+  "variantName": "cards-industry",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-28T00:00:00.000Z",
+  "canonicalModel": "standalone",
+  "sourceContext": {
+    "originUrl": "https://www.compliancesigns.com/",
+    "discoveredDuring": "site-migration",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "imagePattern": "multiple",
+    "purpose": "cards-industry-panel: per-industry tab panel with an industry banner tile followed by 4 product tiles",
+    "structure": "1 image-overlay industry tile (name + 'Shop All') + 4 product tiles (image, price, title, CTA) in one 5-column row",
+    "hasBgImage": true,
+    "position": "middle",
+    "isFullWidth": false,
+    "hasGrid": true
+  },
+  "contentPattern": {
+    "structure": "row 1: [industry photo] | [industry name, 'Shop All' link]; rows 2+: [product image] | [price, product title link, 'Select Options' link]. One block per tab panel (section-metadata tab-id/tab-title)",
+    "buttonCount": 5,
+    "imageCount": 5
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.compliancesigns.com/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-28T00:00:00.000Z"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-industry"]
+}

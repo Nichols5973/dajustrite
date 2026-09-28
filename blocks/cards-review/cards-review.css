@@ -1,0 +1,151 @@
+/* cards-review: white review cards in a horizontal slider with overlaid prev/next buttons */
+
+.cards-review {
+  position: relative;
+}
+
+.cards-review .cards-review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+
+  /* mobile: 1.2 cards visible so the next review peeks in */
+  grid-auto-columns: calc((100% + 16px) / 1.2 - 16px);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.cards-review .cards-review-list::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-review .cards-review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 16px;
+  background-color: #fff;
+  color: var(--cs-gray-700, #374151);
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: start;
+  scroll-snap-align: start;
+}
+
+.cards-review .cards-review-card p,
+.cards-review .cards-review-card-body > * {
+  margin: 0;
+}
+
+.cards-review .cards-review-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cards-review .cards-review-card-title,
+.cards-review .cards-review-card-title strong,
+.cards-review .cards-review-card-author {
+  font-weight: 500;
+}
+
+/* star rating: the single-star image repeats across 80px (5 stars) */
+.cards-review .cards-review-card-image {
+  width: 80px;
+  height: 16px;
+  line-height: 0;
+  background-image: var(--cards-review-rating, none);
+  background-repeat: repeat-x;
+  background-size: 16px 16px;
+}
+
+.cards-review .cards-review-card-image img {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* prev/next: small white squares overlapping the slider edges */
+.cards-review .cards-review-prev,
+.cards-review .cards-review-next {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #3d4644;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 8%);
+  color: #3d4644;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.cards-review .cards-review-prev {
+  left: -12px;
+}
+
+.cards-review .cards-review-next {
+  right: -12px;
+}
+
+.cards-review .cards-review-prev::before,
+.cards-review .cards-review-next::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid currentcolor;
+  border-right: 1.5px solid currentcolor;
+}
+
+.cards-review .cards-review-prev::before {
+  transform: translateX(1.5px) rotate(-135deg);
+}
+
+.cards-review .cards-review-next::before {
+  transform: translateX(-1.5px) rotate(45deg);
+}
+
+.cards-review .cards-review-prev:disabled,
+.cards-review .cards-review-next:disabled {
+  cursor: default;
+}
+
+.cards-review .cards-review-prev:disabled::before,
+.cards-review .cards-review-next:disabled::before {
+  opacity: 0.25;
+}
+
+@media (width >= 600px) {
+  .cards-review .cards-review-list {
+    grid-auto-columns: 100%;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-review .cards-review-list {
+    grid-auto-columns: calc((100% - 16px) / 2);
+  }
+
+  .cards-review .cards-review-card {
+    padding: 40px;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-review .cards-review-list {
+    grid-auto-columns: calc((100% - 2 * 16px) / 3);
+  }
+}

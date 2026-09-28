@@ -1,0 +1,44 @@
+{
+  "id": "cards-review",
+  "name": "cards-review",
+  "type": "cards",
+  "variantName": "cards-review",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-28T00:00:00.000Z",
+  "canonicalModel": "standalone",
+  "sourceContext": {
+    "originUrl": "https://www.compliancesigns.com/",
+    "discoveredDuring": "site-migration",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "imagePattern": "icon",
+    "purpose": "cards-review-slider: customer review cards (title, star rating, text, author) in a horizontal slider with prev/next arrows",
+    "structure": "text cards with a star-rating image, 3 visible on desktop, scroll-snap slider",
+    "hasBgImage": false,
+    "position": "middle",
+    "isFullWidth": false,
+    "hasGrid": true
+  },
+  "contentPattern": {
+    "structure": "one row per review: [star-rating image] | [quoted title (bold), review text, author name]. Optional page metadata 'slider-previous' / 'slider-next' sets the arrow button labels (otherwise the target review's title is used)",
+    "buttonCount": 2,
+    "imageCount": 3
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.compliancesigns.com/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-28T00:00:00.000Z"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-review"]
+}

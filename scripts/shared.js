@@ -1,4 +1,4 @@
-import { getMetadata } from './aem.js';
+import { createOptimizedPicture, getMetadata } from './aem.js';
 
 /**
  * Locale config: maps URL prefix to locale metadata.
@@ -358,4 +358,90 @@ export function getBlockContext(block) {
     eventRoot: isEmbed ? root : document,
     isEmbed,
   };
+}
+
+/**
+ * Strip the default button decoration (added by decorateButtons) from a link,
+ * so it renders as a plain text link.
+ * @param {HTMLAnchorElement} link
+ */
+export function unbuttonLink(link) {
+  if (!link) return;
+  link.classList.remove('button', 'primary', 'secondary');
+  if (!link.classList.length) link.removeAttribute('class');
+  link.closest('.button-container')?.classList.remove('button-container');
+}
+
+/**
+ * Remove `el` and any ancestors (up to, not including, `stop`) left empty by its removal.
+ * @param {Element} el
+ * @param {Element} stop
+ */
+function removeWithEmptyAncestors(el, stop) {
+  let parent = el.parentElement;
+  el.remove();
+  while (parent && parent !== stop && !parent.textContent.trim() && !parent.querySelector('img, picture, svg')) {
+    const next = parent.parentElement;
+    parent.remove();
+    parent = next;
+  }
+}
+
+/**
+ * Turn authored block rows into a card list.
+ * Each row becomes an <li class="{prefix}-card"> containing an optional
+ * <div class="{prefix}-card-image"> (first picture in the row) and a
+ * <div class="{prefix}-card-body"> (everything else). Works whether the author
+ * puts image and text in separate cells or in a single cell; empty rows are skipped.
+ * @param {Element} block - the block element whose rows are converted
+ * @param {string} prefix - class prefix, normally the block name
+ * @param {Object} [options]
+ * @param {string} [options.imageWidth='750'] - optimized rendition width
+ * @param {boolean} [options.eagerFirst=false] - eager-load the first card's image (LCP)
+ * @returns {HTMLUListElement}
+ */
+export function buildCardList(block, prefix, { imageWidth = '750', eagerFirst = false } = {}) {
+  const ul = createTag('ul', { class: `${prefix}-list` });
+
+  [...block.children].forEach((row) => {
+    if (!row.textContent.trim() && !row.querySelector('picture, img')) return;
+
+    const li = createTag('li', { class: `${prefix}-card` });
+    moveInstrumentation(row, li);
+
+    const img = row.querySelector('picture img') || row.querySelector('img');
+    if (img) {
+      const picture = img.closest('picture') || img;
+      const imageLink = picture.closest('a');
+      const optimized = createOptimizedPicture(
+        img.src,
+        img.alt || '',
+        eagerFirst && !ul.children.length,
+        [{ width: imageWidth }],
+      );
+      const imageDiv = createTag('div', { class: `${prefix}-card-image` });
+      if (imageLink && !imageLink.textContent.trim()) {
+        imageDiv.append(createTag('a', { href: imageLink.href }, optimized));
+        removeWithEmptyAncestors(imageLink, row);
+      } else {
+        imageDiv.append(optimized);
+        removeWithEmptyAncestors(picture, row);
+      }
+      li.append(imageDiv);
+    } else {
+      li.classList.add(`${prefix}-card-no-image`);
+    }
+
+    const body = createTag('div', { class: `${prefix}-card-body` });
+    [...row.children].forEach((cell) => {
+      if (cell.textContent.trim() || cell.querySelector('picture, img, svg')) {
+        body.append(...cell.childNodes);
+      }
+    });
+    if (body.textContent.trim() || body.children.length) li.append(body);
+
+    ul.append(li);
+  });
+
+  return ul;
 }
