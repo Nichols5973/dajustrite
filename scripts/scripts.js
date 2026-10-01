@@ -407,7 +407,11 @@ async function loadEager(doc) {
 async function loadLazy(doc) {
   const headerEl = doc.querySelector('header');
   const footerEl = doc.querySelector('footer');
-  loadHeader(headerEl);
+  // authoring views (DA layout view, quick-edit) re-run loadPage on every update;
+  // build the header and footer only once so they are not duplicated
+  const headerLoaded = !!headerEl?.querySelector('.header.block');
+  const footerLoaded = !!footerEl?.querySelector('.footer.block');
+  if (headerEl && !headerLoaded) loadHeader(headerEl);
   const templateName = getMetadata('template');
   if (templateName) {
     document.body.classList.add(templateName);
@@ -430,7 +434,7 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadFooter(footerEl);
+  if (footerEl && !footerLoaded) loadFooter(footerEl);
   if (!IS_EDITOR) await martechLazy();
 
   /* Scroll reveal: sections below the viewport animate in as they enter */
