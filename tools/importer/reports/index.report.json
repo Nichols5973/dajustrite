@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://www.compliancesigns.com/",
+  "path": "index",
+  "timestamp": "2026-09-28T13:29:52.122Z",
+  "title": "Safety Signs, Tags, Labels - Guaranteed Compliance",
+  "template": "home",
+  "blocks": [
+    "cards-promo",
+    "cards-category",
+    "cards-product",
+    "cards-industry",
+    "cards-industry",
+    "cards-industry",
+    "cards-industry",
+    "cards-review",
+    "cards-blog",
+    "form-newsletter",
+    "form-newsletter",
+    "cards-feature"
+  ]
+}
